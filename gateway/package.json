@@ -4,7 +4,7 @@
 		"build": "tsc",
 		"start:prod": "node ./dist/server.js",
 		"start": "nodemon",
-		"prepare": "husky install"
+		"docker:build":"docker-compose up --build"
 	},
 	"dependencies": {
 		"@types/cors": "^2.8.17",
