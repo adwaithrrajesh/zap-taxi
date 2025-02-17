@@ -3,5 +3,10 @@
 		"@commitlint/cli": "^19.7.1",
 		"@commitlint/config-conventional": "^19.7.1",
 		"husky": "^9.1.7"
+	},
+	"scripts": {
+		  "lint": "eslint .", 
+		  "test": "echo 'No tests yet'",
+		  "prepare": "husky install"
 	}
 }
