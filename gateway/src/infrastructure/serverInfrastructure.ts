@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import { Request, Response } from 'express';
 import morgan from "morgan";
 import cors from "cors";
 import fs from "fs";
@@ -53,6 +54,11 @@ export class ServerInfrastructure {
         await this.routeConfigurer.config(this.app);
     }
 
+    private async PING(): Promise<void> {
+        this.app.get('/ping', async (req: Request, res: Response): Promise<void> => {
+            res.send('GATEWAY IS ONLINE!!!');
+        });
+    }
 
 
     private startListening(): void {
@@ -76,6 +82,7 @@ export class ServerInfrastructure {
     public initializeServer():void {
         this.initializeMiddlewares()
         this.routeConfig()
+        this.PING()
         this.startListening()
     }
 }
