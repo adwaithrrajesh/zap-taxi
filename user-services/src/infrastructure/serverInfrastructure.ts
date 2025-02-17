@@ -5,8 +5,8 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import config from "./config";
-import helmet from 'helmet'
-import {logger} from './logger'
+import helmet from 'helmet';
+import {logger} from './logger';
 
 export class ServerInfrastructure {
     private app: Application;
@@ -65,8 +65,8 @@ export class ServerInfrastructure {
     }
 
     public initializeServer():void {
-        this.initializeMiddlewares()
-        this.PING()
-        this.startListening()
+        this.initializeMiddlewares();
+        this.PING();
+        this.startListening();
     }
 }

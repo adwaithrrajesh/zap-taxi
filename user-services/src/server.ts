@@ -1,9 +1,9 @@
 import { ServerInfrastructure } from "./infrastructure/serverInfrastructure";
 
 class gatewayServer {
-    private server : ServerInfrastructure
+    private server : ServerInfrastructure;
     constructor(){
-        this.server = new ServerInfrastructure()
+        this.server = new ServerInfrastructure();
     }
 
     public async startServer():Promise<void>{
@@ -16,5 +16,5 @@ class gatewayServer {
     }
 }
 
-const server = new gatewayServer()
+const server = new gatewayServer();
 server.startServer();

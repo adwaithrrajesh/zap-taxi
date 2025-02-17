@@ -5,8 +5,8 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import config from "./config";
-import helmet from 'helmet'
-import {logger} from './logger'
+import helmet from 'helmet';
+import {logger} from './logger';
 import { RouteConfig } from "./route-config";
 
 export class ServerInfrastructure {
@@ -15,7 +15,7 @@ export class ServerInfrastructure {
 
     constructor() {
         this.app = express();
-        this.routeConfigurer = new RouteConfig()
+        this.routeConfigurer = new RouteConfig();
     }
 
     /**
@@ -64,14 +64,14 @@ export class ServerInfrastructure {
     private startListening(): void {
         const port = config.PORT;
         this.app.listen(port, () => {
-            console.log('\n')
-            console.log(' ██████╗  █████╗ ████████╗███████╗██╗    ██╗ █████╗ ██╗   ██╗    ██╗███████╗     ██████╗ ███╗   ██╗██╗     ██╗███╗   ██╗███████╗')
-            console.log('██╔════╝ ██╔══██╗╚══██╔══╝██╔════╝██║    ██║██╔══██╗╚██╗ ██╔╝    ██║██╔════╝    ██╔═══██╗████╗  ██║██║     ██║████╗  ██║██╔════╝')
-            console.log('██║  ███╗███████║   ██║   █████╗  ██║ █╗ ██║███████║ ╚████╔╝     ██║███████╗    ██║   ██║██╔██╗ ██║██║     ██║██╔██╗ ██║█████╗  ')
-            console.log('██║   ██║██╔══██║   ██║   ██╔══╝  ██║███╗██║██╔══██║  ╚██╔╝      ██║╚════██║    ██║   ██║██║╚██╗██║██║     ██║██║╚██╗██║██╔══╝  ')
-            console.log('╚██████╔╝██║  ██║   ██║   ███████╗╚███╔███╔╝██║  ██║   ██║       ██║███████║    ╚██████╔╝██║ ╚████║███████╗██║██║ ╚████║███████╗')
-            console.log(' ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝')
-            console.log('\n')
+            console.log('\n');
+            console.log(' ██████╗  █████╗ ████████╗███████╗██╗    ██╗ █████╗ ██╗   ██╗    ██╗███████╗     ██████╗ ███╗   ██╗██╗     ██╗███╗   ██╗███████╗');
+            console.log('██╔════╝ ██╔══██╗╚══██╔══╝██╔════╝██║    ██║██╔══██╗╚██╗ ██╔╝    ██║██╔════╝    ██╔═══██╗████╗  ██║██║     ██║████╗  ██║██╔════╝');
+            console.log('██║  ███╗███████║   ██║   █████╗  ██║ █╗ ██║███████║ ╚████╔╝     ██║███████╗    ██║   ██║██╔██╗ ██║██║     ██║██╔██╗ ██║█████╗  ');
+            console.log('██║   ██║██╔══██║   ██║   ██╔══╝  ██║███╗██║██╔══██║  ╚██╔╝      ██║╚════██║    ██║   ██║██║╚██╗██║██║     ██║██║╚██╗██║██╔══╝  ');
+            console.log('╚██████╔╝██║  ██║   ██║   ███████╗╚███╔███╔╝██║  ██║   ██║       ██║███████║    ╚██████╔╝██║ ╚████║███████╗██║██║ ╚████║███████╗');
+            console.log(' ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝       ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝');
+            console.log('\n');
             logger.info(`Server listening on port ${port}`);
         }).on("error", (error) => {
             logger.error("Server Error:", error);
@@ -80,9 +80,9 @@ export class ServerInfrastructure {
     }
 
     public initializeServer():void {
-        this.initializeMiddlewares()
-        this.routeConfig()
-        this.PING()
-        this.startListening()
+        this.initializeMiddlewares();
+        this.routeConfig();
+        this.PING();
+        this.startListening();
     }
 }
