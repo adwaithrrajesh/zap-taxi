@@ -7,6 +7,7 @@ import path from "path";
 import config from "./config";
 import helmet from 'helmet';
 import {logger} from './logger';
+import router from "../presentation/routes";
 
 export class ServerInfrastructure {
     private app: Application;
@@ -47,6 +48,10 @@ export class ServerInfrastructure {
      * @route - config
      */
 
+    private async routeConfig(): Promise<void>{
+        this.app.use('/',router);
+    }
+
     private async PING(): Promise<void> {
         this.app.get('/ping', async (req: Request, res: Response): Promise<void> => {
             res.send('USER SERVICE IS ONLINE!!!');
@@ -67,6 +72,7 @@ export class ServerInfrastructure {
     public initializeServer():void {
         this.initializeMiddlewares();
         this.PING();
+        this.routeConfig();
         this.startListening();
     }
 }

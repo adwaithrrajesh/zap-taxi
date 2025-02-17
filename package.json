@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 	 	 "lint": "eslint .",
-		  "lint:fix": "eslint .",
+		  "lint:fix": "npx eslint . --fix",
 		  "test": "echo 'No tests yet'",
 		  "prepare": "husky install"
 	}

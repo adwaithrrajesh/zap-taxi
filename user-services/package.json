@@ -4,7 +4,7 @@
 		"build": "tsc",
 		"start:prod": "node ./dist/server.js",
 		"start": "nodemon",
-		"docker:build":"docker-compose up --build"
+		"docker:build": "docker-compose up --build"
 	},
 	"dependencies": {
 		"@types/cors": "^2.8.17",
@@ -16,6 +16,7 @@
 		"express-rate-limit": "^7.5.0",
 		"helmet": "^8.0.0",
 		"http-proxy-middleware": "^3.0.3",
+		"module-alias": "^2.2.3",
 		"morgan": "^1.10.0",
 		"nodemon": "^3.1.9",
 		"pino": "^9.6.0",

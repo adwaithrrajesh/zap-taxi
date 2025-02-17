@@ -4,7 +4,7 @@ import config from "../config";
 
 
 const routesConfig: { [route: string]: string } = {
-    '/user': config.USER_SERVICE_URL,
+    '/api/user': config.USER_SERVICE_URL,
 };
 
 export class RouteConfig {
@@ -14,6 +14,7 @@ export class RouteConfig {
      */
     public async config(app: Application): Promise<void> {
         Object.entries(routesConfig).forEach(([route, serviceUrl]) => {
+            console.log(route,serviceUrl);
             app.use(route, proxy(serviceUrl));
         });
     }
