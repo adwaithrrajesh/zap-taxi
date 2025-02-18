@@ -11,6 +11,7 @@
       "paths": {
         "@infrastructure/*": ["infrastructure/*"],
         "@presentation/*": ["presentation/*"],
+        "@domain/*": ["domain/*"],
       }
     },
     "include": ["src/**/*.ts"],

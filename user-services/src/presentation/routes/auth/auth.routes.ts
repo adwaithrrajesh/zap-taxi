@@ -1,6 +1,31 @@
 import { Router } from 'express';
-import { UserController } from '../../controllers/user.controller';
+import { UserController } from '@presentation/controllers/user.controller';
 
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: User login
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Successful login
+ *       401:
+ *         description: Invalid credentials
+ */
 
 export class AuthRoutes {
     router: Router;

@@ -4,10 +4,13 @@ import morgan from "morgan";
 import cors from "cors";
 import fs from "fs";
 import path from "path";
-import config from "./config";
+import config from "@infrastructure/config/env.config";
 import helmet from 'helmet';
-import {logger} from './logger';
-import router from "../presentation/routes";
+import {logger} from '@infrastructure/logger';
+import router from "@presentation/routes";
+import connectDB from "@infrastructure/orm/mongoose";
+import { swaggerSpec } from "./config/swagger.config";
+import swaggerUi from 'swagger-ui-express';
 
 export class ServerInfrastructure {
     private app: Application;
@@ -17,7 +20,7 @@ export class ServerInfrastructure {
     }
 
     /**
-     * Configures and initializes server middlewares.
+     * @Configures and initializes server middlewares.
      */
     private initializeMiddlewares(): void {
         this.configureMorgan();
@@ -52,6 +55,10 @@ export class ServerInfrastructure {
         this.app.use('/',router);
     }
 
+    private initializeSwagger(): void {
+        this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    }
+
     private async PING(): Promise<void> {
         this.app.get('/ping', async (req: Request, res: Response): Promise<void> => {
             res.send('USER SERVICE IS ONLINE!!!');
@@ -70,9 +77,11 @@ export class ServerInfrastructure {
     }
 
     public initializeServer():void {
+        connectDB();
         this.initializeMiddlewares();
         this.PING();
         this.routeConfig();
+        this.initializeSwagger();
         this.startListening();
     }
 }
