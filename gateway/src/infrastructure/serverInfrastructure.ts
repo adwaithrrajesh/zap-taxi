@@ -8,6 +8,7 @@ import config from "./config";
 import helmet from 'helmet';
 import {logger} from './logger';
 import { RouteConfig } from "./route-config";
+import rateLimiter from "./security/rate-limiter";
 
 export class ServerInfrastructure {
     private app: Application;
@@ -24,6 +25,7 @@ export class ServerInfrastructure {
     private initializeMiddlewares(): void {
         this.configureMorgan();
         this.app.use(cors({ origin: "*", credentials: true }));
+        this.app.use(rateLimiter);
         this.app.use(helmet());
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
